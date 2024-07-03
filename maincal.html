@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Delights Mart!</title>
+    <style>
+        body{
+    background-image: url('https://img.freepik.com/premium-photo/supermarket-store-aisle-interior-abstract-blurred-background_293060-10503.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+#whole{
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    margin-left: 500px;
+    margin-top: 100px;
+    padding-top: 70px;
+    padding-left: 50px;
+    gap: 10px;
+    opacity: 0.99;
+    
+}
+.course{
+    margin-bottom: 20px;
+}
+input[type] {
+    width: 30%;
+    height: 30px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    color: black;
+    
+  }
+  #id{
+    width: 200px;
+    height: 30px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    color: black;
+  }
+  div#card{
+    width: 200px;
+    height: 30px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    color: black;
+    background-color: white;
+    border-style: solid;
+  border-width: 2px;
+  }
+  #showcard{
+    width: 200px;
+    height: 30px;
+   
+    padding-top: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    color: black;
+
+  }
+   #whole button{
+    width: 30%;
+    height: 30px;
+    
+    padding-top: 5px;
+  
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    color: black;
+      
+}
+ #whole select{
+    width: 30%;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    color: black;
+
+}
+.first{
+    display: flex;
+    margin-left: 450px;
+    gap: 20px;
+}
+    </style>
+    
+</head>
+<body>
+   <center><h1>Daily Delights Mart!</h1></center>
+   <div class="first">
+    <input type="text" id="id" name="id" placeholder="User_ID" required>
+   <div id="card"></div>
+   <button id="showcard">Get Details</button>
+   </div>
+   
+    <div id="whole">
+    <div id="courses"> 
+        <div class="course">
+            <input type="text" class="item" placeholder="Item Name">
+            <input type="number" class="quantity" placeholder="Quantity">
+            <input type="number" class="price" placeholder="price">
+            
+        </div>
+    </div>
+    <div class="buttons">
+        <button id="add-course">Add Item</button>
+        <button id="calculate">Calculate Cost</button>
+        
+    </div>
+    <div id="result"></div>
+</div>
+
+    <script>
+        //JS
+        var  c1="";
+
+        document.getElementById('add-course').addEventListener('click', function() {
+            const courses = document.getElementById('courses');
+            const courseDiv = document.createElement('div');
+            courseDiv.classList.add('course');
+            courseDiv.innerHTML = `
+            <input type="text" class="item" placeholder="Item Name">
+            <input type="number" class="quantity" placeholder="Quantity">
+            <input type="number" class="price" placeholder="price">
+            `;
+            courses.appendChild(courseDiv);
+        });
+
+        document.getElementById('calculate').addEventListener('click', function() {
+                const courses = document.getElementsByClassName('course');
+                var totalCost = 0;
+
+                for (let course of courses) {
+                    const quantity= parseFloat(course.querySelector('.quantity').value);
+                    const price = parseFloat(course.querySelector('.price').value);
+
+                    if (!isNaN(quantity) && !isNaN(price)) {
+                    
+                        totalCost += quantity * price;
+                    }
+                }
+                var discount=0;
+                var g="Gold";
+                var s="Silver";
+                g.trim();
+                c1=c1.trim();
+    if (c1 === g) {
+        discount = totalCost * (30 / 100);
+        console.log("Discount applied:", discount);
+    }
+    else if (c1 === s) {
+        discount = totalCost * (15 / 100);
+        console.log("Discount applied:", discount);
+    }
+    if (totalCost=== 0) {
+        document.getElementById('result').textContent = "Please add some Items.";
+    } else {
+     
+        document.getElementById('result').textContent = `Total cost is: ${totalCost-discount}`;
+    }
+        }
+        );
+        document.getElementById('showcard').addEventListener('click', function() {
+            var str = document.getElementById('id').value;
+            if (str.length == 0) {
+                document.getElementById("card").innerHTML= "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("card").innerHTML = this.responseText;
+                        c1=this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "getcard.php?q=" + str, true);
+                xmlhttp.send();
+            }
+        });
+    </script>
+</body>
+</html> 

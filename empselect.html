@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Supermarket</title>
+        <style>
+            body {
+              background-color: lightblue;
+            }
+            .adm{
+                border: 1px solid black;
+                width: 400px;
+                height: 300px;
+                margin-right: 20px;
+            }
+            .adm img{
+                padding-left: 100px;
+                padding-top: 40px;
+            }
+            .sel{
+                display: flex;
+                margin-left: 60px;
+                margin-top: 100px;
+            }
+            .emp{
+                border: 1px solid black;
+                width: 400px;
+                margin-right: 20px;
+                
+            }
+            .emp img{
+                padding-left: 100px;
+                padding-top: 40px;
+                padding-bottom: 20px;
+            }
+            .bill{
+                border: 1px solid black;
+                width: 400px;
+                
+            }
+            .bill img{
+                padding-left: 100px;
+                padding-top: 40px;
+                padding-bottom: 20px;
+            }
+             button{
+                    color: #bde0fe;
+                    background-color: black ;
+                    border: none;
+                    border-radius: 15px;
+                    height: 50px;
+                    width: 250px;
+                    font-size: 20px;
+                    text-align: center;
+                    margin-left: 80px;
+                    margin-bottom: 20px;
+                }
+
+        </style>
+    </head>
+    <body>
+        <h1>Daily Delights Mart!</h1>
+        <div  class="sel">
+            <div class="adm">
+                <img src="https://icon-library.com/images/new-user-icon/new-user-icon-3.jpg"  height="150px" width="200px">
+                <button onclick="admin()">Add USer</button>
+            </div>
+            <div class="emp">
+                <img src="https://static-00.iconduck.com/assets.00/edit-profile-icon-2048x1683-1315ias7.png
+                " height="130px" width="200px">
+                <button onclick="update()">Update User</button>
+            </div>
+            <div class="bill">
+                <img src="https://cdn-icons-png.flaticon.com/512/2584/2584894.png" height="130px" width="200px">
+                <button onclick="employee()">Calculate Bill</button>
+            </div>
+        </div>
+        <script>
+             function admin() {
+                window.location = "adduser.html";
+            }
+            function update() {
+                window.location = "updateuser.html";
+            }
+            function employee() {
+                window.location = "maincal.html";
+            }
+        </script>
+    </body>
+</html>

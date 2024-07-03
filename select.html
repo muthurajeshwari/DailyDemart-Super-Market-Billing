@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Supermarket</title>
+        <style>
+            body {
+              background-color: lightblue;
+            }
+            .adm{
+                border: 1px solid black;
+                width: 400px;
+                
+                margin-right: 20px;
+            }
+            .adm img{
+                padding-left: 100px;
+            }
+            .sel{
+                display: flex;
+                margin-left: 390px;
+                margin-top: 150px;
+            }
+            .emp{
+                border: 1px solid black;
+                width: 400px;
+                
+            }
+            .emp img{
+                padding-left: 100px;
+            }
+             button{
+                    color: #bde0fe;
+                    background-color: black ;
+                    border: none;
+                    border-radius: 15px;
+                    height: 50px;
+                    width: 250px;
+                    font-size: 20px;
+                    text-align: center;
+                    margin-left: 80px;
+                    margin-bottom: 20px;
+                }
+        h1{
+            font-family: "Garamond", serif;
+            font-size: 50px;
+        }
+      #log{
+        padding-top: 0px;
+      }
+        </style>
+    </head>
+    <body>
+        <h1>Daily Delights Mart!</h1>
+        
+        <div  class="sel">
+            <div class="adm">
+                <img src="https://logodix.com/logo/1707081.png"  height="150px" width="200px">
+                <button onclick="admin()">Administrator Login</button>
+            </div>
+            <div class="emp">
+                <img src="https://employee.esharda.net/HRPRD/images/Employee2.png" height="150px" width="200px">
+                <button onclick="employee()">Employee Login</button>
+            </div>
+
+           
+        </div>
+        <script>
+             function admin() {
+                window.location = "admlogin.html";
+            }
+            function employee() {
+                window.location = "emplogin.html";
+            }
+            
+        </script>
+    </body>
+</html>
